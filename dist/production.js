@@ -83,8 +83,7 @@ openHealthDataAppControllers.controller('modalController',
   };
 
   $scope.zipcode = function (zipcode) {
-    debugger;
-    $window.alert(zipcode);
+    $modalInstance.close(zipcode);
   };
 
 }]);
@@ -115,8 +114,8 @@ openHealthDataAppControllers.controller('mapCtrl', ['$scope', '$rootScope',
         }
       });
 
-      modalInstance.result.then(function (selectedItem) {
-        $scope.selected = selectedItem;
+      modalInstance.result.then(function (zipcode) {
+        $log.info('The zipcode you want is ' + zipcode);
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
       });
