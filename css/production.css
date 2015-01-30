@@ -145,11 +145,12 @@ Colors:
 	}
 	.modal-footer {
 		text-align: center;
+		font-size: 1.5em;
 	}
   .modal-footer .btn {
     margin-left: auto;
     margin-right: auto;
-    font-size: 1.5em;
+    /*font-size: 1.5em;*/
     /*display: block;*/
     padding-left: 1em;
     padding-right: 1em;

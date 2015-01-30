@@ -82,8 +82,9 @@ openHealthDataAppControllers.controller('modalController',
     $modalInstance.dismiss('cancel');
   };
 
-  $scope.zipcode = function () {
+  $scope.zipcode = function (zipcode) {
     debugger;
+    $window.alert(zipcode);
   };
 
 }]);
