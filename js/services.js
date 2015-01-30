@@ -71,3 +71,16 @@ openHealthDataServices.factory('Toast', function() {
   };
 });
 
+openHealthDataServices.factory('zipcodeSearch', ['$resource',
+  function($resource) {
+    return $resource('http://api.zippopotam.us/us/:zip', {}, {
+      query: {
+        method: 'JSONP',
+        params: {
+          zip: '23517',
+          callback: 'JSON_CALLBACK'
+        }
+      }
+    });
+}]);
+

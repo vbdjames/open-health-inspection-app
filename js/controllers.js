@@ -29,8 +29,8 @@ var openHealthDataAppControllers =
   angular.module('openHealthDataAppControllers', []);
 
 openHealthDataAppControllers.controller('modalController',
-  ['$scope', '$modalInstance', 'items', '$log', '$location', '$window',
-  function($scope, $modalInstance, items, $log, $location, $window){
+  ['$scope', '$modalInstance', '$window',
+  function($scope, $modalInstance, $window){
 
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
@@ -44,9 +44,9 @@ openHealthDataAppControllers.controller('modalController',
 
 openHealthDataAppControllers.controller('mapCtrl', ['$scope', '$rootScope',
  '$http', '$location', 'Geosearch', 'Search', '$filter', '$modal', '$log',
- 'Toast', '$window', function($scope, $rootScope, $http,
+ 'Toast', '$window', 'zipcodeSearch', function($scope, $rootScope, $http,
  $location, Geosearch, Search, $filter, $modal, $log,
- Toast, $window) {
+ Toast, $window, zipcodeSearch) {
 
     var currentIndex;
 
@@ -54,9 +54,7 @@ openHealthDataAppControllers.controller('mapCtrl', ['$scope', '$rootScope',
         ga('send', 'pageview', $location.path());
     });
 
-    $scope.items = ['item1', 'item2', 'item3'];
     $scope.openModal = function(size) {
-
       var modalInstance = $modal.open({
         templateUrl: 'partials/modal.html',
         controller: 'modalController',
@@ -70,6 +68,11 @@ openHealthDataAppControllers.controller('mapCtrl', ['$scope', '$rootScope',
 
       modalInstance.result.then(function (zipcode) {
         $log.info('The zipcode you want is ' + zipcode);
+        zipcodeSearch.query({
+          zip: zipcode
+        }, function(el) {
+          debugger;
+        });
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
       });
